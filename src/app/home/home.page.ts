@@ -13,10 +13,10 @@ export class HomePage {
 
   cambiarTema(){
     if(this.icono == "oscuro"){
-      document.documentElement.style.setProperty("--fondo", "#373737")
+      document.documentElement.style.setProperty("--fondo", "#262626")
       this.icono = "claro"
     }else{
-      document.documentElement.style.setProperty("--fondo", "#acda63")
+      document.documentElement.style.setProperty("--fondo", "#012C56")
       this.icono = "oscuro"
     }
   }
