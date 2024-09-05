@@ -12,12 +12,62 @@
     <ion-avatar>
       <img src="assets/icono.png" alt="Profile Picture" />
     </ion-avatar>
-    <h2>Nombre del Usuario</h2>
-    <p>
-      Esta es una breve descripción del usuario. Aquí puedes agregar detalles
-      sobre el perfil, como la biografía, intereses, etc.
-    </p>
-    <ion-button [routerLink]="['/inicio']">ir al inicio</ion-button>
+    <div class="header-info">
+      <h2>Nombre del Usuario</h2>
+      <h4>RUT : XX.XXX.XXX-X</h4>
+    </div>
+<!--Switch para cambiar modo-->
+    <div class="infoConductor">
+      <h3>Modo Conductor</h3>
+      <ion-toggle class="modoConductor" (ionChange)="toggleChange($event)"></ion-toggle>
+    </div>
+
+<!--Informcaion MODO PASAJERO-->
+
+    <div class="informacion" [ngClass]="{'hidden': isConductorMode}">
+      <ion-list>
+        <ion-item>
+          <ion-input label="Carrera : " placeholder="Ingrese nombre de la carrera"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input label="Direccion : " value="121 S Pinckney St #300"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input label="Numero : " value="+569-13131313" [readonly]="true"></ion-input>
+        </ion-item>
+      
+      </ion-list>
+    </div>
+<!--Informcaion MODO CONDUCTOR-->
+    <div class="auto-info" [ngClass]="{'hidden': !isConductorMode}">
+      <ion-list>
+        <ion-item>
+          <ion-input label="Patente Auto : " placeholder="GGWP-69"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input label="Marca : " value="Hyundai"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Modelo: " value="W40"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input label="Numero : " value="+569-13131313" [readonly]="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Destino : " value="Howarts" [readonly]="true"></ion-input>
+        </ion-item>
+      
+      </ion-list>
+
+
+    </div>
+  
+    <ion-button [routerLink]="['/inicio']">Ir al inicio</ion-button>
     <ion-button (click)="goBack()">Volver</ion-button>
   </div>
 </ion-content>

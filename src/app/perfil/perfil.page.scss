@@ -3,14 +3,54 @@
     padding: 16px;
   
     ion-avatar {
-      width: 120px;
-      height: 120px;
+      width: 250px;
+      height: 250px;
       margin: 0 auto;
+      margin-bottom: 20px;
     }
   
     ion-button {
       margin-top: 16px;
     }
+
+  /*HEADER INFO*/ 
+  }
+  .header-info {
+    background-color: #7EB9FF;
+    border-radius: 40px;
+    padding: 10px 20px; /* Ajusta estos valores según el tamaño que desees */
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+    margin: 0 auto; /* Centra el contenedor en su elemento padre */
+  }
+  
+  .header-info h2,
+  .header-info h4 {
+    margin: 0; /* Elimina márgenes para evitar espacio extra */
+    color: white; /* Ajusta el color del texto según tu diseño */
+  }
+  
+  /* Ajusta el tamaño de las fuentes */
+  .header-info h2 {
+    font-size: 24px;
+  }
+  
+  .header-info h4 {
+    font-size: 16px;
+  }
+  /* Toggle Conductor */
+  .infoConductor{
+    margin-top: 16px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+
   }
   
   h2 {
@@ -20,4 +60,9 @@
   p {
     color: #666;
   }
+
+ 
   
+  .hidden {
+    display: none;
+  }
