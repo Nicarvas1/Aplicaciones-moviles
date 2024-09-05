@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="profile-container">
+    <ion-avatar>
+      <img src="assets/icono.png" alt="Profile Picture" />
+    </ion-avatar>
+    <h2>Nombre del Usuario</h2>
+    <p>
+      Esta es una breve descripción del usuario. Aquí puedes agregar detalles
+      sobre el perfil, como la biografía, intereses, etc.
+    </p>
+    <ion-button [routerLink]="['/inicio']">ir al inicio</ion-button>
+    <ion-button (click)="goBack()">Volver</ion-button>
+  </div>
+</ion-content>

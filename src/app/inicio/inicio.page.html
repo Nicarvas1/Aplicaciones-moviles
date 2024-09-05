@@ -1,0 +1,39 @@
+<<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="profile-container">
+    <!-- Botón para agregar usuarios -->
+    <ion-button [routerLink]="['/agregar']">Agregar Conductor</ion-button>
+
+    <!-- Menú desplegable para elegir asiento -->
+    <ion-item>
+      <ion-label>Elegir Asiento</ion-label>
+      <ion-select [(ngModel)]="selectedSeat" (ionChange)="onSeatChange($event)">
+        <ion-select-option *ngFor="let seat of seats" [value]="seat">{{ seat }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Lista de usuarios con fotos y opción de asiento -->
+    <ion-list>
+      <ion-item *ngFor="let user of users">
+        <ion-avatar slot="start">
+          <img [src]="user.photoUrl" alt="User Photo"/>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ user.name }}</h2>
+          <p>{{ user.description }}</p>
+        </ion-label>
+        <ion-select [(ngModel)]="user.selectedSeat">
+          <ion-select-option *ngFor="let seat of seats" [value]="seat">{{ seat }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
