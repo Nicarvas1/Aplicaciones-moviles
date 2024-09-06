@@ -18,12 +18,17 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+  },  {
+    path: 'conductor',
+    loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
   },
-  
   {
-    path: 'agregar',
-    loadChildren: () => import('./agregar/agregar.module').then( m => m.AgregarPageModule)
+    path: 'pasajero',
+    loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule)
   },
+
+  
+  
 
 
 ];

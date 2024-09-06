@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Viajes Disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- Ejemplo de un viaje -->
+    <ion-card *ngFor="let trip of trips">
+      <ion-card-header>
+        <ion-card-title>{{ trip.model }} - {{ trip.licensePlate }}</ion-card-title>
+        <ion-card-subtitle>Conductor: {{ trip.driverName }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Salida:</strong> {{ trip.startLocation }}</p>
+        <p><strong>Destino:</strong> {{ trip.endLocation }}</p>
+        <p><strong>Asientos disponibles:</strong> {{ trip.seats }}</p>
+        <p><strong>Hora de Salida:</strong> {{ trip.departureTime }}</p>
+        <p><strong>Precio:</strong> ${{ trip.price }}</p>
+      </ion-card-content>
+
+      <ion-button expand="full" color="primary">Reservar</ion-button>
+    </ion-card>
+  </ion-list>
+</ion-content>

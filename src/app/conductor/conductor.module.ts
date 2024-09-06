@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
-import { AgregarPage } from './agregar.page';
+import { ConductorPageRoutingModule } from './conductor-routing.module';
+
+import { ConductorPage } from './conductor.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
+    ConductorPageRoutingModule
   ],
-  declarations: [AgregarPage]
+  declarations: [ConductorPage]
 })
-export class AgregarPageModule {}
-
-
+export class ConductorPageModule {}
