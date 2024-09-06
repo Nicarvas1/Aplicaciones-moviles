@@ -1,31 +1,35 @@
-.profile-container {
-    text-align: center;
-    padding: 16px;
-  
-    ion-avatar {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto;
-    }
-  
-    ion-button {
-      margin-top: 16px;
-    }
-  
-    ion-item {
-      margin: 8px 0;
-    }
-  
-    ion-list {
-      margin-top: 16px;
-    }
-  }
-  
-  h2 {
-    margin: 16px 0;
-  }
-  
-  p {
-    color: #666;
-  }
-  
+.container {
+  background-color: var(--fondo);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  min-height: 100vh;
+}
+
+ion-icon {
+  font-size: 9rem;
+  color: var(--icono);
+}
+
+ion-button {
+  width: 90%;
+  height: 3rem; /* Asegura que ambos botones tengan la misma altura */
+  font-size: 1.1rem;
+}
+ion-button::part(native) {
+  border-radius: 2rem !important;
+}
+
+h1 {
+  color: var(--textos);
+}
+
+#tema {
+  color: var(--icono-tema);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 2.5rem;
+}

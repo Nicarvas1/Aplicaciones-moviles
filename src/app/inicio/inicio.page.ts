@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Animation, AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -6,27 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  selectedSeat: string | undefined;
-  seats: string[] = ['1', '2', '3', '4'];
-  users: { name: string; description: string; photoUrl: string; selectedSeat?: string }[] = [
-    { name: 'Usuario 1', description: 'Descripción del Usuario 1', photoUrl: 'assets/user1.jpg' },
-    { name: 'Usuario 2', description: 'Descripción del Usuario 2', photoUrl: 'assets/user2.jpg' }
-  ];
+  
 
   constructor() { }
+
+  icono = "oscuro"
 
   ngOnInit() {
     // Inicialización si es necesario
   }
 
-  onSeatChange(event: any) {
-    // Maneja el cambio de asiento
-    console.log('Asiento seleccionado:', event.detail.value);
+  cambiarTema(){
+    if(this.icono == "oscuro"){
+      document.documentElement.style.setProperty("--fondo", "#262626")
+      this.icono = "claro"
+    }else{
+      document.documentElement.style.setProperty("--fondo", "#012C56")
+      this.icono = "oscuro"
+    }
   }
 
-  addUser() {
-    // Lógica para agregar un nuevo usuario
-    // Por ejemplo, puedes abrir un formulario para ingresar detalles del nuevo usuario
-    console.log('Agregar usuario');
+  seleccionarPasajero() {
+    console.log('Pasajero seleccionado');
+    // Aquí puedes agregar la lógica para el botón Pasajero
+  }
+
+  seleccionarConductor() {
+    console.log('Conductor seleccionado');
+    // Aquí puedes agregar la lógica para el botón Conductor
   }
 }
