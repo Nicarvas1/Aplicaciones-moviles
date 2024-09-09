@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular'; // Importa ModalController
 
 @Component({
   selector: 'app-perfil',
@@ -10,7 +11,7 @@ export class PerfilPage implements OnInit {
 
   isConductorMode: boolean = false; // Declaración correcta de la variable
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalController: ModalController) { }
 
   // Maneja el cambio en el ion-toggle
   toggleChange(event: any) {
@@ -22,6 +23,15 @@ export class PerfilPage implements OnInit {
     this.router.navigate(['/']); // Navega a la ruta raíz, ajusta según tu estructura de rutas
   }
 
+  // Función para cerrar el modal
+  async closeModal() {
+    const modal = await this.modalController.getTop(); // Obtén el modal activo
+    if (modal) {
+      await modal.dismiss(); // Cierra el modal
+    }
+  }
+
   ngOnInit() {
   }
 }
+

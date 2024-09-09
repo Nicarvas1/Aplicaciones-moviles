@@ -5,7 +5,7 @@
     <ion-icon name="car-sport-outline"></ion-icon>
     <h1>TeLlevoAPP</h1>
     <input type="text" placeholder="Nombre de usuario">
-    <input type="password" placeholder="Contraseña">
+    <input type="password" placeholder="contraseña" (blur)="animarError(0)">
     <ion-button [routerLink]="['/perfil']">Ingresar</ion-button>
 
     <p>Olvide mi contraseña</p>
