@@ -20,30 +20,24 @@ export class HomePage implements OnInit {
     // Cambia el tema y actualiza el ícono
     if (this.icono === 'oscuro') {
       document.documentElement.style.setProperty('--fondo', '#373737');
-      document.documentElement.style.setProperty('--textos', '#898989');
+
       this.icono = 'claro';
     } else {
       document.documentElement.style.setProperty('--fondo', '#012C56');
-      document.documentElement.style.setProperty('--textos', '#ffffff');
+
       this.icono = 'oscuro';
     }
   }
 
-  animarLogo() {
-    // Crea y ejecuta la animación para el logo
-    const logoElement = document.querySelector('#logo');
-    if (logoElement) {
-      this.anim.create()
-        .addElement(logoElement)
-        .duration(1000)
-        .iterations(Infinity)
-        .direction('alternate')
-        .fromTo('color', 'red', 'blue')
-        .fromTo('transform', 'scale(1)', 'scale(1.3)')
-        .play();
-    } else {
-      console.error('No se encontró el elemento con id "logo"');
-    }
+  animarLogo(){
+    this.anim.create()
+    .addElement(document.querySelector("#logo")!)
+    .duration(1000)
+    .iterations(Infinity)
+    .direction('alternate')
+    .fromTo("color", "#FFB71B", "#FFB71B")
+    .fromTo("transform","scale(1)", "scale(1.3)")
+    .play()
   }
 
   animarError(index: number) {

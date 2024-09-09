@@ -9,31 +9,38 @@ import { Animation, AnimationController } from '@ionic/angular';
 export class InicioPage implements OnInit {
   
 
-  constructor() { }
+  constructor(private anim: AnimationController) { }
 
   icono = "oscuro"
 
   ngOnInit() {
-    // Inicialización si es necesario
+    this.animarLogo();// Inicialización si es necesario
   }
 
-  cambiarTema(){
-    if(this.icono == "oscuro"){
-      document.documentElement.style.setProperty("--fondo", "#262626")
-      this.icono = "claro"
-    }else{
-      document.documentElement.style.setProperty("--fondo", "#012C56")
-      this.icono = "oscuro"
+  
+
+  cambiarTema() {
+    // Cambia el tema y actualiza el ícono
+    if (this.icono === 'oscuro') {
+      document.documentElement.style.setProperty('--fondo', '#373737');
+  
+      this.icono = 'claro';
+    } else {
+      document.documentElement.style.setProperty('--fondo', '#012C56');
+
+      this.icono = 'oscuro';
     }
   }
 
-  seleccionarPasajero() {
-    console.log('Pasajero seleccionado');
-    // Aquí puedes agregar la lógica para el botón Pasajero
+  animarLogo(){
+    this.anim.create()
+    .addElement(document.querySelector("#logo")!)
+    .duration(1000)
+    .iterations(Infinity)
+    .direction('alternate')
+    .fromTo("color", "#FFB71B", "#FFB71B")
+    .fromTo("transform","scale(1)", "scale(1.3)")
+    .play()
   }
 
-  seleccionarConductor() {
-    console.log('Conductor seleccionado');
-    // Aquí puedes agregar la lógica para el botón Conductor
-  }
 }
