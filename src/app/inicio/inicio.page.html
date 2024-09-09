@@ -3,11 +3,11 @@
   <div class="container">
     <ion-icon name="car-sport-outline"></ion-icon>
     <h1>Elija una opción</h1>
-    <ion-button expand="block" (click)="seleccionarPasajero()">
+    <ion-button expand="block" [routerLink]="['/pasajero']">
       Pasajero
     </ion-button>
     
-    <ion-button expand="block"  (click)="seleccionarPasajero()">
+    <ion-button expand="block"  [routerLink]="['/conductor']">
       Conductor
     </ion-button>
   </div>

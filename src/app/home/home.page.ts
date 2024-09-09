@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
       document.documentElement.style.setProperty('--textos', '#898989');
       this.icono = 'claro';
     } else {
-      document.documentElement.style.setProperty('--fondo', '#454E5F');
+      document.documentElement.style.setProperty('--fondo', '#012C56');
       document.documentElement.style.setProperty('--textos', '#ffffff');
       this.icono = 'oscuro';
     }
