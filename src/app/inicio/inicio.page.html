@@ -1,16 +1,17 @@
 <ion-content>
-  <ion-icon src="/assets/{{icono}}.svg" id="tema" (click)="cambiarTema()"></ion-icon>
+  <header>
+    <ion-icon class="perfil" src="https://ionicframework.com/docs/img/demos/avatar.svg" id="perfil" [routerLink]="['/perfil']"></ion-icon>
+    <ion-icon class="cambiaColor" src="/assets/{{icono}}.svg" id="tema" (click)="cambiarTema()"></ion-icon>
+  </header>
+
   <div class="container">
     <ion-icon name="car-sport-outline" id="logo"></ion-icon>
     <h1>Elija una opción</h1>
     <ion-button expand="block" [routerLink]="['/pasajero']">
       Pasajero
     </ion-button>
-    
-    <ion-button expand="block"  [routerLink]="['/conductor']">
+    <ion-button expand="block" [routerLink]="['/conductor']">
       Conductor
     </ion-button>
   </div>
 </ion-content>
-
-

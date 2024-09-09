@@ -34,11 +34,23 @@ ion-card-content {
 ion-button {
   --background: #003366; /* Fondo azul oscuro para los botones */
   --color: #000; /* Texto blanco en los botones */
-  --border-radius: 20px; /* Bordes redondeados en los botones */
+  --border-radius: 50px; /* Bordes redondeados en los botones */
   margin: 10px 0; /* Espaciado vertical en los botones */
+  
 }
 
 /* Estilo para los botones cuando están en estado de enfoque */
 ion-button:focus {
   --background: #004080; /* Azul más oscuro al enfocar el botón */
+  
+}
+
+ion-back-button{
+  color: #ffffff;
+}
+ion-card-title {
+  color: #ffffff;
+}
+ion-card-subtitle {
+  color: #ffffff;
 }
