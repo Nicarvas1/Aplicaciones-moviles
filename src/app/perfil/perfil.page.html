@@ -68,21 +68,22 @@
     </div>
 
     <!-- Botón para presentar modal -->
-    <ion-button expand="full" id="modal-trigger">historial de viaje </ion-button>
+    <ion-button expand="full" id="modal-trigger">Historial de viaje</ion-button>
 
     <!-- Modal -->
     <ion-modal trigger="modal-trigger" #modal>
       <ng-template>
         <ion-header>
           <ion-toolbar>
-            <ion-title>historial</ion-title>
+            <ion-title>Historial</ion-title>
             <ion-buttons slot="end">
               <ion-button (click)="closeModal()">Close</ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
-        <!-- HISTORIAL DE VIAJE -->
-        <ion-content class="ion-padding"> San francisco, Av.lysoforn </ion-content>
+        <ion-content class="ion-padding">
+          San Francisco, Av. Lysoforn
+        </ion-content>
       </ng-template>
     </ion-modal>
 
