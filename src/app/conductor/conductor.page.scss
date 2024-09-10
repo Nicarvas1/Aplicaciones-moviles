@@ -10,7 +10,7 @@ ion-content {
 
 /* Estilo para el encabezado del ion-toolbar */
 ion-toolbar {
-  --background: #003366; /* Azul oscuro para el encabezado */
+  --background: var(--fondo); /* Azul oscuro para el encabezado */
 }
 
 /* Estilo para el título dentro del ion-toolbar */
@@ -31,6 +31,7 @@ ion-input {
   --border-radius: 8px; /* Bordes redondeados en los campos de entrada */
   --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para los campos de entrada */
   color: #000000; /* Color del texto en negro */
+  margin-top: 10px;
 }
 
 /* Estilo para los campos de entrada (ion-input) cuando tienen un placeholder */
@@ -40,7 +41,6 @@ ion-input::placeholder {
 
 /* Estilo para el botón de agregar viaje */
 ion-button {
-  --background: #004080; /* Fondo azul más oscuro para el botón */
   --color: #000000; /* Texto negro en el botón */
   --border-radius: 20px; /* Bordes redondeados en el botón */
   --margin-top: 20px; /* Margen superior para separar el botón del resto del contenido */
@@ -50,7 +50,8 @@ ion-button {
   --padding-end: 16px; /* Relleno a la derecha del botón */
 }
 
-/* Estilo para el botón cuando está en estado de enfoque */
-ion-button:focus {
-  --background: #003366; /* Azul aún más oscuro al enfocar el botón */
+
+
+ion-button::part(native) {
+  border-radius: 2rem !important;
 }
