@@ -5,7 +5,7 @@ ion-content {
 
 /* Estilo para el encabezado del ion-toolbar */
 ion-toolbar {
-  --background: #003366; /* Azul oscuro para el encabezado */
+  --background: var(--fondo); 
 }
 
 /* Estilo para el título dentro del ion-toolbar */
@@ -22,35 +22,39 @@ ion-card {
 
 /* Estilo para el encabezado de la tarjeta */
 ion-card-header {
-  --background: #1e304b; /* Fondo azul claro para el encabezado de la tarjeta */
+  --background: var(--fondo-cards); /* Fondo azul claro para el encabezado de la tarjeta */
 }
 
 /* Estilo para el contenido de la tarjeta */
 ion-card-content {
   color: #000; /* Texto en azul oscuro */
+  margin-top: 10px;
+}
+
+ion-list{
+  background-color: var(--fondo);
 }
 
 /* Estilo para los botones */
 ion-button {
-  --background: #003366; /* Fondo azul oscuro para los botones */
-  --color: #000; /* Texto blanco en los botones */
-  --border-radius: 50px; /* Bordes redondeados en los botones */
+  height: 2.5rem; /* Asegura que los botones tengan suficiente altura para lucir redondeados */
   margin: 10px 0; /* Espaciado vertical en los botones */
-  
 }
 
-/* Estilo para los botones cuando están en estado de enfoque */
-ion-button:focus {
-  --background: #004080; /* Azul más oscuro al enfocar el botón */
-  
+ion-button::part(native) {
+  border-radius: 1.5rem !important;
 }
 
-ion-back-button{
+
+
+ion-back-button {
   color: #ffffff;
 }
+
 ion-card-title {
   color: #ffffff;
 }
+
 ion-card-subtitle {
   color: #ffffff;
 }

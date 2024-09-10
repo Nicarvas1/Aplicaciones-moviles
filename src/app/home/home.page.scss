@@ -10,6 +10,7 @@
   ion-icon {
     font-size: 8rem;
     color: var(--icono);
+    transition: background-color .5s ease;
   }
 
   input,
@@ -46,4 +47,8 @@
 
 .contenedor{
   transition: background-color .5s ease;
+}
+
+#perfil{
+  color: #ffffff;
 }

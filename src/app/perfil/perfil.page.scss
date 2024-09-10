@@ -12,6 +12,9 @@
     ion-button {
       margin-top: 16px;
     }
+    ion-button::part(native) {
+      border-radius: 2rem !important;
+    }
 
   /*HEADER INFO*/ 
   }

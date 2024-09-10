@@ -23,10 +23,14 @@ export class InicioPage implements OnInit {
     // Cambia el tema y actualiza el ícono
     if (this.icono === 'oscuro') {
       document.documentElement.style.setProperty('--fondo', '#373737');
-  
+      document.documentElement.style.setProperty('--icono', '#ffffff');
+      document.documentElement.style.setProperty('--fondo-cards', '#012C56');
+
       this.icono = 'claro';
     } else {
       document.documentElement.style.setProperty('--fondo', '#012C56');
+      document.documentElement.style.setProperty('--icono', '#FFB71B');
+      document.documentElement.style.setProperty('--fondo-cards', '#FFB71B');
 
       this.icono = 'oscuro';
     }
@@ -38,7 +42,7 @@ export class InicioPage implements OnInit {
     .duration(1000)
     .iterations(Infinity)
     .direction('alternate')
-    .fromTo("color", "#FFB71B", "#FFB71B")
+    .fromTo("color", "--icono", "--icono")
     .fromTo("transform","scale(1)", "scale(1.3)")
     .play()
   }

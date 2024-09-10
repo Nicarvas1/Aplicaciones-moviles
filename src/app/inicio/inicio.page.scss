@@ -2,10 +2,13 @@ header {
   display: flex;
   justify-content: space-between; /* Distribuye los íconos equitativamente */
   padding: 20px; /* Añade un poco de espacio alrededor de los íconos */
+  transition: background-color .5s ease;
 }
 
 ion-icon {
   color: var(--icono);
+  transition: color .5s ease;
+
 }
 #tema,#perfil {
   font-size: 2.5rem; 
