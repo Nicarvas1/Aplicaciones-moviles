@@ -25,31 +25,8 @@ ion-item {
 
 /* Estilo para los campos de entrada */
 ion-input {
-  --padding-start: 10px; /* Relleno en el inicio del campo de entrada */
-  --padding-end: 10px; /* Relleno en el final del campo de entrada */
-  --background: #ffffff; /* Fondo blanco para los campos de entrada */
-  --border-radius: 8px; /* Bordes redondeados en los campos de entrada */
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para los campos de entrada */
-  color: #000000; /* Color del texto en negro */
   margin-top: 10px;
 }
-
-/* Estilo para los campos de entrada (ion-input) cuando tienen un placeholder */
-ion-input::placeholder {
-  color: #999999; /* Color gris para el texto del placeholder */
-}
-
-/* Estilo para el botón de agregar viaje */
-ion-button {
-  --color: #000000; /* Texto negro en el botón */
-  --border-radius: 20px; /* Bordes redondeados en el botón */
-  --margin-top: 20px; /* Margen superior para separar el botón del resto del contenido */
-  --padding-top: 14px; /* Relleno superior en el botón */
-  --padding-bottom: 14px; /* Relleno inferior en el botón */
-  --padding-start: 16px; /* Relleno a la izquierda del botón */
-  --padding-end: 16px; /* Relleno a la derecha del botón */
-}
-
 
 
 ion-button::part(native) {
