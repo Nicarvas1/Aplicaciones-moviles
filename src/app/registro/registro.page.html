@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" label="Nombre" labelPlacement="floating" fill="outline" [clearInput]="true"
+      placeholder="Ingresa tu nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" label="Apellido" labelPlacement="floating" fill="outline" [clearInput]="true"
+      placeholder="Ingresa tu apellido"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" label="Correo" labelPlacement="floating" fill="outline" [clearInput]="true"
+      placeholder="Ingresa tu correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label id="region">Region</ion-label>
+    <ion-select placeholder="Selecciona tu region">
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+      <ion-select-option value="sede1">Region </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Sede Duoc</ion-label>
+    <ion-select placeholder="Selecciona tu sede">
+      <ion-select-option value="sede1">Sede 1</ion-select-option>
+      <ion-select-option value="sede2">Sede 2</ion-select-option>
+      <ion-select-option value="sede3">Sede 3</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tengo Auto</ion-label>
+    <ion-toggle [(ngModel)]="isDriver"></ion-toggle>
+  </ion-item>
+
+  <div *ngIf="isDriver">
+    <ion-item>
+      <ion-input type="text" label="Modelo" labelPlacement="floating" fill="outline" [clearInput]="true"
+        placeholder="Ingresa el modelo del auto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" label="Asientos" labelPlacement="floating" fill="outline" [clearInput]="true"
+        placeholder="Ingresa la cantidad de asientos"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" label="Patente" labelPlacement="floating" fill="outline" [clearInput]="true"
+        placeholder="Ingresa la patente"></ion-input>
+    </ion-item>
+  </div>
+  <ion-button>Registrarse</ion-button>
+</ion-content>

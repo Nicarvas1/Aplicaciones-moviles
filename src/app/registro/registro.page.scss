@@ -1,0 +1,54 @@
+/* Estilo general para el contenido */
+ion-back-button {
+  color: #ffffff;
+}
+
+ion-content {
+  padding: 20px; /* Espaciado alrededor del contenido */
+}
+
+/* Estilo para el encabezado del ion-toolbar */
+ion-toolbar {
+  --background: var(--fondo); /* Azul oscuro para el encabezado */
+}
+
+/* Estilo para el título dentro del ion-toolbar */
+ion-title {
+  color: #ffffff; /* Blanco para el texto del título */
+}
+
+/* Estilo para los elementos del formulario */
+ion-item {
+  margin-bottom: 15px; /* Espaciado inferior entre los elementos */
+}
+
+/* Estilo para los campos de entrada */
+ion-input {
+  margin-top: 10px;
+  --background: white; /* Fondo blanco para los inputs */
+  --placeholder-color: #7a7a7a; /* Color del texto de marcador */
+}
+
+/* Estilo para los selects */
+ion-select {
+  --background: white; /* Fondo blanco para los selectores */
+  --placeholder-color: #7a7a7a; /* Color del texto de marcador */
+}
+
+/* Estilo para el toggle */
+ion-toggle {
+  --handle-background: var(--ion-color-primary); /* Color del botón del toggle */
+  --background: #d3d3d3; /* Color de fondo del toggle */
+}
+
+
+
+/* Estilo para el div condicional */
+div {
+  padding-top: 10px; /* Espaciado superior para el div de opciones adicionales */
+}
+
+/* Estilo para los botones (en caso de usarlos en el futuro) */
+ion-button::part(native) {
+  border-radius: 2.5rem !important; /* Botones redondeados */
+}
