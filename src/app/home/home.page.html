@@ -3,10 +3,28 @@
   <div class="contenedor">
     <ion-icon name="car-sport-outline" id="logo"></ion-icon>
     <h1>TeLlevoAPP</h1>
-    <input type="text" placeholder="Nombre de usuario" (blur)="animarError(0)">
-    <input type="password" placeholder="Contraseña" (blur)="animarError(1)">
+    <input type="text" placeholder="Nombre de usuario" [(ngModel)]="email" (blur)="animarError(0)">
+    <input type="password" placeholder="Contraseña" [(ngModel)]="clave" (blur)="animarError(1)">
     <ion-button [routerLink]="['/inicio']">Ingresar</ion-button>
-    <ion-button [routerLink]="['/registro'] ">registro</ion-button>
-    <p>Olvide mi contraseña</p>
+    <ion-button [routerLink]="['/registro']">registro</ion-button>
+    <p (click)="setOpen(true)">Olvidé mi contraseña</p>
   </div>
 </ion-content>
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Recuperar contraseña</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div class="contenedor-modal">
+        <input type="email" placeholder="usuario@gmail.com" [(ngModel)]="email">
+        <button (click)="resetPass()">Recuperar</button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

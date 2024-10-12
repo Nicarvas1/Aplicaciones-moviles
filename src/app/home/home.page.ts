@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AnimationController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AnimationController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,67 @@ import { AnimationController } from '@ionic/angular';
 export class HomePage implements OnInit {
 
   icono = 'oscuro'; // Inicialización del tema actual
+  isModalOpen = false;
+  usuarios = [
+    {
+      nombre: "Juan Hernandez",
+      clave: "juanito123",
+      email: "juan@gmail.com"
+    },
+    {
+      nombre: "benjamin casellas",
+      clave: "casellas2003",
+      email: "b.casellas12@gmail.com"
+    },
+  ]
 
-  constructor(private anim: AnimationController) {}
-
+  constructor(private anim: AnimationController, private http: HttpClient,
+    private loadingCtrl: LoadingController,private router: Router) {}
+    
+    async resetPass() {
+      const loading = await this.loadingCtrl.create({
+        message: 'Cargando...',
+      });
+      for (let u of this.usuarios) {
+        if (u.email == this.email) {
+          loading.present()
+          let nueva = Math.random().toString(36).slice(-6)
+          u.clave = nueva
+          let body = {
+            "nombre": u.nombre,
+            "app": "Aplicaciones-moviles",
+            "clave": nueva,
+            "email": u.email
+          }        
+          this.http.post("https://myths.cl/api/reset_password.php", body)
+          .subscribe((data)=>{
+            loading.dismiss()
+            console.log(data)
+          })
+          return;
+        }
+      }
+      loading.dismiss()
+    }
+    setOpen(isOpen: boolean) {
+      this.isModalOpen = isOpen;
+    }
+  
+    email = ""
+    clave = ""
+  
+    login() {
+      for (let u of this.usuarios) {
+        if (u.email == this.email && u.clave == this.clave) {
+          console.log(`Bienvenido ${u.nombre}!.`)
+          this.router.navigate(['/inicio']);
+          return;
+        }
+      }
+      console.log("Datos incorrectos!.")
+    }
+  
+  
   ngOnInit() {
     this.animarLogo(); // Animar el logo al iniciar el componente
   }
@@ -63,4 +123,5 @@ export class HomePage implements OnInit {
       console.error(`No se encontró el input en el índice ${index}`);
     }
   }
+
 }
