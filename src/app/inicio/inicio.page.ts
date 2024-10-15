@@ -47,4 +47,8 @@ export class InicioPage implements OnInit {
     .play()
   }
 
+  cerrarSesion(){
+    // Cerrar sesión
+  }
+
 }

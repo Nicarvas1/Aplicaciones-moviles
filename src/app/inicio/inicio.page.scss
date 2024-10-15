@@ -1,19 +1,63 @@
 header {
   display: flex;
-  justify-content: space-between; /* Distribuye los íconos equitativamente */
+  align-items: flex-end; /* Distribuye los íconos equitativamente */
   padding: 20px; /* Añade un poco de espacio alrededor de los íconos */
   transition: background-color .5s ease;
 }
 
+main-content {
+  background-color:var(--fondo) ;
+}
+
+ion-toolbar {
+  background-color: var(--fondo);
+
+}
+
+.contenidoPerfil {
+ display: flex;
+ justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+.labelPerfil{
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.contenidoCambioColor{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+.labelCambiarTema{
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.contenidoCerrarSesion{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 10px;
+
+}
+.labelCerrarSesion{
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
 ion-icon {
   color: var(--icono);
   transition: color .5s ease;
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
-#tema,#perfil {
+#tema,#perfil,#cerrar {
   font-size: 2.5rem; 
   color: var(--icono-tema);
-  border-radius: 4px;
+  border-radius: 9px;
 }
 #logo {
   font-size: 12rem; 

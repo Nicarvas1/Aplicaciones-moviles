@@ -1,17 +1,61 @@
 <ion-content>
-  <header>
-    <ion-icon class="perfil" src="/assets/iconoLogin.svg" id="perfil" [routerLink]="['/perfil']"></ion-icon>
-    <ion-icon class="cambiaColor" src="/assets/{{icono}}.svg" id="tema" (click)="cambiarTema()"></ion-icon>
-  </header>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="contenidoPerfil">
+        <ion-icon
+          class="perfil"
+          src="/assets/iconoLogin.svg"
+          id="perfil"
+          [routerLink]="['/perfil']"
+        ></ion-icon>
+        <ion-label class="labelPerfil">Perfil</ion-label>
+      </div>
 
-  <div class="container">
-    <ion-icon name="car-sport-outline" id="logo"></ion-icon>
-    <h1>Elija una opción</h1>
-    <ion-button expand="block" [routerLink]="['/pasajero']">
-      Pasajero
-    </ion-button>
-    <ion-button expand="block" [routerLink]="['/conductor']">
-      Conductor
-    </ion-button>
+      <div class="contenidoCambioColor">
+        <ion-icon
+          class="cambiaColor"
+          src="/assets/{{icono}}.svg"
+          id="tema"
+          (click)="cambiarTema()"
+        ></ion-icon>
+        <ion-label class="labelCambiarTema">Cambiar tema</ion-label>
+      </div>
+
+      <div class="contenidoCerrarSesion">
+        <ion-icon
+          class="cerrar"
+          src="/assets/log-out.svg"
+          id="cerrar"
+          [routerLink]="['/home']"
+          (click)="cerrarSesion()"
+        ></ion-icon>
+        <ion-label class="labelCerrarSesion">Cerrar sesión</ion-label>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="container">
+      <ion-icon name="car-sport-outline" id="logo"></ion-icon>
+      <h1>Elija una opción</h1>
+      <ion-button expand="block" [routerLink]="['/pasajero']">
+        Pasajero
+      </ion-button>
+      <ion-button expand="block" [routerLink]="['/conductor']">
+        Conductor
+      </ion-button>
+    </div>
   </div>
 </ion-content>
