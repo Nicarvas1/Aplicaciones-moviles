@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
     },
     {
       nombre: "benjamin casellas",
-      clave: "casellas2003",
+      clave: "casellas20",
       email: "b.casellas12@gmail.com"
     },
   ]
@@ -61,16 +61,27 @@ export class HomePage implements OnInit {
     clave = ""
   
     login() {
+      let usuarioEncontrado = false;
+      let claveCorrecta = false;
+    
       for (let u of this.usuarios) {
-        if (u.email == this.email && u.clave == this.clave) {
-          console.log(`Bienvenido ${u.nombre}!.`)
-          this.router.navigate(['/inicio']);
-          return;
+        if (u.email == this.email) {
+          usuarioEncontrado = true;
+          if (u.clave == this.clave) {
+            claveCorrecta = true;
+            console.log(`Bienvenido ${u.nombre}!.`);
+            this.router.navigate(['/inicio']);
+            return;
+          }
         }
       }
-      console.log("Datos incorrectos!.")
+    
+      if (!usuarioEncontrado) {
+        console.log("Nombre de usuario incorrecto!.");
+      } else if (!claveCorrecta) {
+        console.log("Contraseña incorrecta!.");
+      }
     }
-  
   
   ngOnInit() {
     this.animarLogo(); // Animar el logo al iniciar el componente
