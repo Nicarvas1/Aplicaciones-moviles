@@ -13,8 +13,8 @@
       <img src="assets/icono.png" alt="Profile Picture" />
     </ion-avatar>
     <div class="header-info">
-      <h2>Nombre del Usuario</h2>
-      <h4>RUT : XX.XXX.XXX-X</h4>
+      <h2>{{nombreUsuario}}</h2>
+      <h4>RUT: {{rutUsuario}}</h4>
     </div>
 
     <!-- Switch para cambiar modo -->
@@ -28,15 +28,15 @@
       <ion-list>
         <ion-item>
           <ion-label>Carrera:</ion-label>
-          <ion-input placeholder=" Ingrese nombre de la carrera"></ion-input>
+          <p class="Carrera">{{carreraUsuario}}</p>
         </ion-item>
         <ion-item>
           <ion-label>Dirección:</ion-label>
-          <ion-input value=" 121 S Pinckney St #300"></ion-input>
+          <p class="Dirección">{{direccionUsuario}}</p>
         </ion-item>
         <ion-item>
           <ion-label>Numero:</ion-label>
-          <ion-input value=" +569-13131313" [readonly]="true"></ion-input>
+          <p class="Numero">{{telefonoUsuario}}</p>
         </ion-item>
       </ion-list>
     </div>
@@ -46,23 +46,23 @@
       <ion-list>
         <ion-item>
           <ion-label>Patente: </ion-label>
-          <ion-input placeholder=" GGWP-69"></ion-input>
+           <p class="Patente">{{patenteConductor}}</p>
         </ion-item>
         <ion-item>
           <ion-label>Marca: </ion-label>
-          <ion-input value=" Hyundai"></ion-input>
+            <p class="Marca">{{marcaConductor}}</p>
         </ion-item>
         <ion-item>
           <ion-label>Modelo:</ion-label>
-          <ion-input value=" W40"></ion-input>
+          <p class="Modelo">{{modeloConductor}}</p>
         </ion-item>
         <ion-item>
           <ion-label>Numero:</ion-label>
-          <ion-input value=" +569-13131313" [readonly]="true"></ion-input>
+          <p class="Numero">{{telefonoConductor}}</p>
         </ion-item>
         <ion-item>
           <ion-label>Destino:</ion-label>
-          <ion-input value=" Hogwarts" [readonly]="true"></ion-input>
+          <p class="Destino">{{destinoConductor}}</p>
         </ion-item>
       </ion-list>
     </div>

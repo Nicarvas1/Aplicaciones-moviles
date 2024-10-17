@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationController, LoadingController } from '@ionic/angular';
 
@@ -8,10 +8,30 @@ import { AnimationController, LoadingController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
-
+export class HomePage implements OnInit, AfterViewInit {
+  // Propiedades de usuario
   icono = 'oscuro'; // Inicialización del tema actual
   isModalOpen = false;
+  isConductorMode: boolean = false;
+
+  email = '';
+  clave = '';
+
+  // Información del usuario
+  nombreUsuario = '';
+  rutUsuario = '';
+  carreraUsuario = '';
+  direccionUsuario = '';
+  telefonoUsuario = '';
+
+  // Información del conductor
+  patenteConductor = '';
+  marcaConductor = '';
+  modeloConductor = '';
+  destinoConductor = '';
+  telefonoConductor = '';
+
+  // Lista de usuarios predefinidos
   usuarios = [
     {
       nombre: "Juan Hernandez",
@@ -19,100 +39,157 @@ export class HomePage implements OnInit {
       email: "juan@gmail.com"
     },
     {
-      nombre: "benjamin casellas",
+      nombre: "Benjamin Casellas",
       clave: "casellas20",
       email: "b.casellas12@gmail.com"
     },
-  ]
+  ];
 
-  constructor(private anim: AnimationController, private http: HttpClient,
-    private loadingCtrl: LoadingController,private router: Router) {}
-    
-    async resetPass() {
-      const loading = await this.loadingCtrl.create({
-        message: 'Cargando...',
-      });
-      for (let u of this.usuarios) {
-        if (u.email == this.email) {
-          loading.present()
-          let nueva = Math.random().toString(36).slice(-6)
-          u.clave = nueva
-          let body = {
-            "nombre": u.nombre,
-            "app": "Aplicaciones-moviles",
-            "clave": nueva,
-            "email": u.email
-          }        
-          this.http.post("https://myths.cl/api/reset_password.php", body)
-          .subscribe((data)=>{
-            loading.dismiss()
-            console.log(data)
-          })
-          return;
-        }
-      }
-      loading.dismiss()
-    }
-    setOpen(isOpen: boolean) {
-      this.isModalOpen = isOpen;
-    }
-  
-    email = ""
-    clave = ""
-  
-    login() {
-      let usuarioEncontrado = false;
-      let claveCorrecta = false;
-    
-      for (let u of this.usuarios) {
-        if (u.email == this.email) {
-          usuarioEncontrado = true;
-          if (u.clave == this.clave) {
-            claveCorrecta = true;
-            console.log(`Bienvenido ${u.nombre}!.`);
-            this.router.navigate(['/inicio']);
-            return;
-          }
-        }
-      }
-    
-      if (!usuarioEncontrado) {
-        console.log("Nombre de usuario incorrecto!.");
-      } else if (!claveCorrecta) {
-        console.log("Contraseña incorrecta!.");
-      }
-    }
-  
+  constructor(
+    private anim: AnimationController,
+    private http: HttpClient,
+    private loadingCtrl: LoadingController,
+    private router: Router
+  ) {}
+
   ngOnInit() {
     this.animarLogo(); // Animar el logo al iniciar el componente
+  }
+
+  ngAfterViewInit() {
+    this.cargarDatosDelUsuario(); // Cargar datos del usuario desde localStorage
+    this.cargarDatosDelConductor(); // Cargar datos del conductor desde localStorage
+  }
+
+  cargarDatosDelUsuario() {
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.nombreUsuario = usuario.nombre;
+      this.rutUsuario = usuario.rut; 
+      this.carreraUsuario = usuario.carrera;
+      this.direccionUsuario = usuario.direccion;
+      this.telefonoUsuario = usuario.telefono;
+    }
+  }
+
+  cargarDatosDelConductor() {
+    const conductorString = localStorage.getItem('conductor');
+    if (conductorString) {
+      const conductor = JSON.parse(conductorString);
+      this.patenteConductor = conductor.patente;
+      this.marcaConductor = conductor.marca; 
+      this.modeloConductor = conductor.modelo;
+      this.telefonoConductor = conductor.telefono;
+      this.destinoConductor = conductor.destino;
+    } else {
+      // Inicializar datos de conductor si no existen
+      this.inicializarConductor();
+    }
+  }
+
+  inicializarConductor() {
+    const conductor = {
+      patente: "AB-1234",
+      marca: "Toyota",
+      modelo: "Sedan",
+      telefono: "123456789",
+      destino: "Hogwarts",
+    };
+    localStorage.setItem('conductor', JSON.stringify(conductor));
+  }
+
+  inicializarUsuario() {
+    const usuario = {
+      nombre: "Juan Hernandez",
+      rut: "12.345.678-9",
+      clave: "juanito123",
+      email: "juan@gmail.com",
+      carrera: "Ingeniería Civil Informática",
+      direccion: "Calle Falsa 123",
+      telefono: "123456789",
+    };
+    localStorage.setItem('usuario', JSON.stringify(usuario));
   }
 
   cambiarTema() {
     // Cambia el tema y actualiza el ícono
     if (this.icono === 'oscuro') {
       document.documentElement.style.setProperty('--fondo', '#373737');
-
       this.icono = 'claro';
     } else {
       document.documentElement.style.setProperty('--fondo', '#012C56');
-
       this.icono = 'oscuro';
     }
   }
 
-  animarLogo(){
+  animarLogo() {
     this.anim.create()
-    .addElement(document.querySelector("#logo")!)
-    .duration(1000)
-    .iterations(Infinity)
-    .direction('alternate')
-    .fromTo("color", "#FFB71B", "#FFB71B")
-    .fromTo("transform","scale(1)", "scale(1.3)")
-    .play()
+      .addElement(document.querySelector("#logo")!)
+      .duration(1000)
+      .iterations(Infinity)
+      .direction('alternate')
+      .fromTo("color", "#FFB71B", "#FFB71B")
+      .fromTo("transform", "scale(1)", "scale(1.3)")
+      .play();
+  }
+
+  async resetPass() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+    });
+
+    await loading.present();
+
+    const usuario = this.usuarios.find(u => u.email === this.email);
+    if (usuario) {
+      const nuevaClave = Math.random().toString(36).slice(-6);
+      usuario.clave = nuevaClave;
+
+      const body = {
+        nombre: usuario.nombre,
+        app: "Aplicaciones-moviles",
+        clave: nuevaClave,
+        email: usuario.email,
+      };
+
+      this.http.post("https://myths.cl/api/reset_password.php", body)
+        .subscribe({
+          next: (data) => {
+            console.log(data);
+          },
+          error: (error) => {
+            console.error("Error al restablecer la contraseña", error);
+          },
+          complete: () => {
+            loading.dismiss();
+          }
+        });
+    } else {
+      console.log("Email no encontrado!");
+      loading.dismiss();
+    }
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  login() {
+    const usuarioEncontrado = this.usuarios.find(u => u.email === this.email);
+    if (usuarioEncontrado) {
+      if (usuarioEncontrado.clave === this.clave) {
+        console.log(`Bienvenido ${usuarioEncontrado.nombre}!.`);
+        this.router.navigate(['/inicio']);
+      } else {
+        console.log("Contraseña incorrecta!.");
+      }
+    } else {
+      console.log("Nombre de usuario incorrecto!.");
+    }
   }
 
   animarError(index: number) {
-    // Crea y ejecuta la animación de error para el campo de entrada especificado
     const inputElement = document.querySelectorAll('input')[index];
     if (inputElement) {
       this.anim.create()
@@ -134,5 +211,4 @@ export class HomePage implements OnInit {
       console.error(`No se encontró el input en el índice ${index}`);
     }
   }
-
 }

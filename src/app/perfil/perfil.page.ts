@@ -10,6 +10,18 @@ import { ModalController, AnimationController, IonModal } from '@ionic/angular';
 export class PerfilPage implements AfterViewInit {
   @ViewChild('modal', { static: false }) modal: IonModal | undefined;
   isConductorMode: boolean = false;
+  /*Usuario*/ 
+  nombreUsuario: string = '';
+  rutUsuario: string = '';
+  carreraUsuario: string = '';
+  direccionUsuario: string = '';
+  telefonoUsuario: string = '';
+  /* conductor */
+  patenteConductor: string = '';
+  marcaConductor: string = '';
+  modeloConductor: string = '';
+  destinoConductor: string = '';
+  telefonoConductor: string = '';
 
   constructor(
     private router: Router,
@@ -18,6 +30,49 @@ export class PerfilPage implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
+    // Cargar datos del usuario desde localStorage
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.nombreUsuario = usuario.nombre;
+      this.rutUsuario = usuario.rut; 
+      this.carreraUsuario = usuario.carrera;
+      this.direccionUsuario = usuario.direccion;
+      this.telefonoUsuario = usuario.telefono;
+    }
+
+    // Cargar datos del conductor desde localStorage
+    const conductorString = localStorage.getItem('conductor');
+    if (conductorString) {
+      const conductor = JSON.parse(conductorString);
+      this.patenteConductor = conductor.patente;
+      this.marcaConductor = conductor.marca; 
+      this.modeloConductor = conductor.modelo;
+      this.telefonoConductor = conductor.telefono;
+      this.destinoConductor = conductor.destino;
+    }
+
+    // Inicializar datos de usuario y conductor en localStorage
+    const usuario = {
+      nombre: "Juan Hernandez",
+      rut: "12.345.678-9",
+      clave: "juanito123",
+      email: "juan@gmail.com",
+      carrera: "Ingeniería Civil Informática",
+      direccion: "Calle Falsa 123",
+      telefono: "123456789",
+    };
+    const conductor = {
+      patente: "AB-1234",
+      marca: "Toyota",
+      modelo: "Sedan",
+      telefono: "123456789",
+      destino: "Hogwarts",
+    };
+    localStorage.setItem('conductor', JSON.stringify(conductor));
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    // Configurar animaciones del modal
     this.setModalAnimations();
   }
 
@@ -26,9 +81,7 @@ export class PerfilPage implements AfterViewInit {
 
     const enterAnimation = (baseEl: HTMLElement) => {
       const root = baseEl.shadowRoot;
-      if (!root) {
-        throw new Error('Root shadow DOM not found');
-      }
+      if (!root) return;
 
       const backdropElement = root.querySelector('ion-backdrop') as HTMLElement;
       const wrapperElement = root.querySelector('.modal-wrapper') as HTMLElement;
@@ -54,7 +107,7 @@ export class PerfilPage implements AfterViewInit {
           .duration(500)
           .addAnimation([backdropAnimation, wrapperAnimation]);
       } else {
-        return null; // Devolver null si alguno de los elementos no existe
+        return null; // Return null if any of the elements don't exist
       }
     };
 

@@ -13,15 +13,15 @@
     <ion-card *ngFor="let trip of trips">
       <ion-card-header>
         <ion-card-title>{{ trip.model }} - {{ trip.licensePlate }}</ion-card-title>
-        <ion-card-subtitle>Conductor: {{ trip.driverName }}</ion-card-subtitle>
+        <ion-card-subtitle>Conductor: {{ trip.conductor }}</ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
-        <p><strong>Salida:</strong> {{ trip.startLocation }}</p>
-        <p><strong>Destino:</strong> {{ trip.endLocation }}</p>
-        <p><strong>Asientos disponibles:</strong> {{ trip.seats }}</p>
-        <p><strong>Hora de Salida:</strong> {{ trip.departureTime }}</p>
-        <p><strong>Precio:</strong> ${{ trip.price }}</p>
+        <p><strong>Salida:</strong> {{ trip.salida }}</p>
+        <p><strong>Destino:</strong> {{ trip.destino }}</p>
+        <p><strong>Asientos disponibles:</strong> {{ trip.asientos }}</p>
+        <p><strong>Hora de Salida:</strong> {{ trip.salida }}</p>
+        <p><strong>Precio:</strong> ${{ trip.precio }}</p>
       </ion-card-content>
 
       <ion-button expand="full" >Reservar</ion-button>
