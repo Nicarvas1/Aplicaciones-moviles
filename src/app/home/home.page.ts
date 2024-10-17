@@ -174,13 +174,13 @@ export class HomePage implements OnInit, AfterViewInit {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
-
+  
   login() {
     const usuarioString = localStorage.getItem('usuario');
     if (usuarioString) {
       const usuario = JSON.parse(usuarioString);
       if (usuario.email === this.email && usuario.clave === this.clave) {
-        console.log(`Bienvenido ${usuario.nombre} ${usuario.apellido}!`);
+        console.log(`Bienvenido ${usuario.nombre}!`);
         this.router.navigate(['/inicio']);
       } else {
         console.error('Email o contraseña incorrectos.');

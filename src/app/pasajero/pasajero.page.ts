@@ -27,36 +27,55 @@ export class PasajeroPage implements OnInit, AfterViewInit {
   ngAfterViewInit() {}
 
   private loadConductorData() {
+    console.log('loadConductorData llamado');
     const conductorString = localStorage.getItem('conductor');
     if (conductorString) {
       const conductor = JSON.parse(conductorString);
-      this.conductorViaje = conductor.conductor;
-      this.salidaViaje = conductor.salida; 
+      console.log('Datos del conductor:', conductor);
+      this.conductorViaje = conductor.nombre;
+      this.salidaViaje = conductor.salida;
       this.destinoViaje = conductor.destino;
-      this.asientosViaje = conductor.asientoDisponible;
+      this.asientosViaje = conductor.asiento;
       this.horasalidaViaje = conductor.horasalida;
       this.precioViaje = conductor.precio;
-      this.licensePlate = conductor.licensePlate; // Asignar la placa del vehículo
-      this.model = conductor.model; // Asignar el modelo del vehículo
+      this.licensePlate = conductor.patente;
+      this.model = conductor.modelo;
     }
   }
 
   private loadTrips() {
-    // Aquí puedes cargar los viajes desde una fuente de datos, por ejemplo, localStorage o una API
     const tripsString = localStorage.getItem('trips');
     if (tripsString) {
       this.trips = JSON.parse(tripsString);
     } else {
-      // Ejemplo de datos de viajes
-      this.trips = [
-        { id: 1, model: 'Toyota Corolla', licensePlate: 'ABC123', conductor: 'Juan Hernadez', salida: '10:00 AM', destino: 'Ciudad A', asientos: 3, precio: 1000 },
-        { id: 2, model: 'Honda Civic', licensePlate: 'XYZ789', conductor: 'Pedro Sanchez', salida: '11:00 AM', destino: 'Ciudad B', asientos: 2, precio: 1500 },
-      ];
-    }   
+      this.trips = [];
+    }
   }
 
-  addTrip(newTrip: any) {
-    this.trips.push(newTrip); // Agregar un nuevo viaje a la lista de viajes
-    localStorage.setItem('trips', JSON.stringify(this.trips)); // Guardar la lista actualizada de viajes en localStorage
+  addNewTrip() {
+    const newTrip = {
+      id: this.trips.length + 1,
+      model: this.model,
+      licensePlate: this.licensePlate,
+      conductor: this.conductorViaje,
+      salida: this.salidaViaje,
+      destino: this.destinoViaje,
+      asientos: this.asientosViaje,
+      precio: this.precioViaje,
+    };
+    this.trips.push(newTrip);
+    localStorage.setItem('trips', JSON.stringify(this.trips));
+    console.log('Nuevo viaje agregado:', newTrip);
+  }
+
+  eliminarViaje(index: number) {
+    this.trips.splice(index, 1);
+    localStorage.setItem('trips', JSON.stringify(this.trips));
+    console.log('Viaje eliminado:', index);
+  }
+
+  reservarViaje(trip: any) {
+    // Implementa la lógica para reservar un viaje
+    console.log('Viaje reservado:', trip);
   }
 }

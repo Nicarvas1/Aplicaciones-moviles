@@ -1,102 +1,113 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Agregar Viaje</ion-title>
-    <ion-buttons slot="end">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
+    <ion-title>Registrar Conductor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form>
+  <form (ngSubmit)="registrarConductor()">
     <ion-list>
-      <!-- Modelo del Vehículo -->
       <ion-item>
+        <ion-label position="floating">Nombre del Conductor</ion-label>
         <ion-input 
           type="text" 
-          label="Modelo vehiculo" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
-          placeholder="Ingresa el modelo del vehículo">
-        </ion-input>
-      </ion-item>
-
-      <!-- Patente -->
-      <ion-item>
-        <ion-input 
-          type="text" 
-          label="Patente" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
-          placeholder="Ingresa la patente">
-        </ion-input>
-      </ion-item>
-
-      <!-- Nombre del Conductor -->
-      <ion-item>
-        <ion-input 
-          type="text" 
-          label="Conductor" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
+          [(ngModel)]="conductor.nombre"
+          name="nombre"
           placeholder="Ingresa el nombre del conductor">
         </ion-input>
       </ion-item>
 
-      <!-- Lugar de Partida -->
       <ion-item>
+        <ion-label position="floating">Patente</ion-label>
         <ion-input 
           type="text" 
-          label="Punto de partida" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
-          placeholder="Ingresa el punto de partida">
+          [(ngModel)]="conductor.patente"
+          name="patente"
+          placeholder="Ingresa la patente">
         </ion-input>
       </ion-item>
 
-      <!-- Lugar de Destino -->
       <ion-item>
+        <ion-label position="floating">Marca</ion-label>
         <ion-input 
           type="text" 
-          label="Destino" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
+          [(ngModel)]="conductor.marca"
+          name="marca"
+          placeholder="Ingresa la marca del vehículo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input 
+          type="text" 
+          [(ngModel)]="conductor.modelo"
+          name="modelo"
+          placeholder="Ingresa el modelo del vehículo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input 
+          type="text" 
+          [(ngModel)]="conductor.telefono"
+          name="telefono"
+          placeholder="Ingresa el teléfono">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Lugar de Salida</ion-label>
+        <ion-input 
+          type="text" 
+          [(ngModel)]="conductor.salida"
+          name="salida"
+          placeholder="Ingresa el lugar de salida">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Destino</ion-label>
+        <ion-input 
+          type="text" 
+          [(ngModel)]="conductor.destino"
+          name="destino"
           placeholder="Ingresa el destino">
         </ion-input>
       </ion-item>
 
-      <!-- Cantidad de Asientos -->
       <ion-item>
+        <ion-label position="floating">Hora de Salida</ion-label>
         <ion-input 
-          type="number" 
-          label="Numero de Asientos" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
-          placeholder="Ingresa el número de asientos">
+          type="text" 
+          [(ngModel)]="conductor.horasalida"
+          name="horasalida"
+          placeholder="Ingresa la hora de salida">
         </ion-input>
       </ion-item>
 
-      <!-- Precio -->
       <ion-item>
+        <ion-label position="floating">Cantidad de Asientos</ion-label>
         <ion-input 
           type="number" 
-          label="Precio" 
-          labelPlacement="floating" 
-          fill="outline" 
-          [clearInput]="true" 
-          placeholder="Ingresa el precio $">
+          [(ngModel)]="conductor.asiento"
+          name="asiento"
+          placeholder="Ingresa la cantidad de asientos">
         </ion-input>
       </ion-item>
-    </ion-list> 
 
-    <!-- Botón Agregar -->
-    <ion-button expand="full" color="primary">Agregar Viaje</ion-button>
+      <ion-item>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input 
+          type="number" 
+          [(ngModel)]="conductor.precio"
+          name="precio"
+          placeholder="Ingresa el precio">
+        </ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">Registrar</ion-button>
+    </ion-list>
   </form>
 </ion-content>
-
