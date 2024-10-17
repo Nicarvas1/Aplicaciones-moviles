@@ -176,16 +176,17 @@ export class HomePage implements OnInit, AfterViewInit {
   }
 
   login() {
-    const usuarioEncontrado = this.usuarios.find(u => u.email === this.email);
-    if (usuarioEncontrado) {
-      if (usuarioEncontrado.clave === this.clave) {
-        console.log(`Bienvenido ${usuarioEncontrado.nombre}!.`);
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      if (usuario.email === this.email && usuario.clave === this.clave) {
+        console.log(`Bienvenido ${usuario.nombre} ${usuario.apellido}!`);
         this.router.navigate(['/inicio']);
       } else {
-        console.log("Contraseña incorrecta!.");
+        console.error('Email o contraseña incorrectos.');
       }
     } else {
-      console.log("Nombre de usuario incorrecto!.");
+      console.error('No se encontró el usuario registrado.');
     }
   }
 

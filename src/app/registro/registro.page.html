@@ -6,71 +6,97 @@
 
 <ion-content>
   <ion-item>
-    <ion-input type="text" label="Nombre" labelPlacement="floating" fill="outline" [clearInput]="true"
-      placeholder="Ingresa tu nombre"></ion-input>
+    <ion-input type="text" label="Nombre" labelPlacement="floating" fill="outline" 
+      [(ngModel)]="usuario.nombre" placeholder="Ingresa tu nombre"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" label="Apellido" labelPlacement="floating" fill="outline" [clearInput]="true"
-      placeholder="Ingresa tu apellido"></ion-input>
+    <ion-input type="text" label="Apellido" labelPlacement="floating" fill="outline" 
+      [(ngModel)]="usuario.apellido" placeholder="Ingresa tu apellido"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" label="Correo" labelPlacement="floating" fill="outline" [clearInput]="true"
-      placeholder="Ingresa tu correo"></ion-input>
+    <ion-input type="text" label="Correo" labelPlacement="floating" fill="outline" 
+      [(ngModel)]="usuario.email" placeholder="Ingresa tu correo"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label id="region">Region</ion-label>
-    <ion-select placeholder="Selecciona tu region">
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
-      <ion-select-option value="sede1">Region </ion-select-option>
+    <ion-input type="text" label="Clave" labelPlacement="floating" fill="outline" 
+      [(ngModel)]="usuario.clave" placeholder="Ingresa tu Clave"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-input type="text" label="Rut" labelPlacement="floating" fill="outline" 
+          [(ngModel)]="usuario.rut" placeholder="Ingresa tu Rut"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="text" label="Carrera" labelPlacement="floating" fill="outline" 
+        [(ngModel)]="usuario.carrera" placeholder="Ingresa tu Carrera"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-input type="text" label="Direccion" labelPlacement="floating" fill="outline" 
+      [(ngModel)]="usuario.direccion" placeholder="Ingresa tu Direccion"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-input type="text" label="Telefono" labelPlacement="floating" fill="outline" 
+      [(ngModel)]="usuario.telefono" placeholder="Ingresa tu Telefono"></ion-input>
+</ion-item>
+
+  <ion-item>
+    <ion-label id="region">Región</ion-label>
+    <ion-select placeholder="Selecciona tu región" [(ngModel)]="usuario.region">
+      <ion-select-option value="arica">Región de Arica y Parinacota: Arica</ion-select-option>
+      <ion-select-option value="iquique">Región de Tarapacá: Iquique</ion-select-option>
+      <ion-select-option value="antofagasta">Región de Antofagasta: Antofagasta</ion-select-option>
+      <ion-select-option value="copiapo">Región de Atacama: Copiapó</ion-select-option>
+      <ion-select-option value="la_serena">Región de Coquimbo: La Serena</ion-select-option>
+      <ion-select-option value="valparaiso">Región de Valparaíso: Valparaíso</ion-select-option>
+      <ion-select-option value="santiago">Región Metropolitana: Santiago</ion-select-option>
+      <ion-select-option value="rancagua">Región del Libertador General Bernardo O’Higgins: Rancagua</ion-select-option>
+      <ion-select-option value="talca">Región del Maule: Talca</ion-select-option>
+      <ion-select-option value="chillan">Región de Ñuble: Chillán</ion-select-option>
+      <ion-select-option value="concepcion">Región del Biobío: Concepción</ion-select-option>
+      <ion-select-option value="temuco">Región de La Araucanía: Temuco</ion-select-option>
+      <ion-select-option value="valdivia">Región de Los Ríos: Valdivia</ion-select-option>
+      <ion-select-option value="puerto_montt">Región de Los Lagos: Puerto Montt</ion-select-option>
+      <ion-select-option value="coyhaique">Región de Aysén del General Carlos Ibáñez del Campo: Coyhaique</ion-select-option>
+      <ion-select-option value="punta_arenas">Región de Magallanes y de la Antártica Chilena: Punta Arenas</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
     <ion-label>Sede Duoc</ion-label>
-    <ion-select placeholder="Selecciona tu sede">
-      <ion-select-option value="sede1">Sede 1</ion-select-option>
-      <ion-select-option value="sede2">Sede 2</ion-select-option>
-      <ion-select-option value="sede3">Sede 3</ion-select-option>
+    <ion-select placeholder="Selecciona tu sede" [(ngModel)]="usuario.sede">
+      <ion-select-option value="sede1">Sede Melipilla</ion-select-option>
+      <ion-select-option value="sede2">Sede Maipú</ion-select-option>
+      <ion-select-option value="sede3">Sede Plaza Oeste</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
     <ion-label>Tengo Auto</ion-label>
-    <ion-toggle [(ngModel)]="isDriver"></ion-toggle>
+    <ion-toggle [(ngModel)]="usuario.isDriver"></ion-toggle>
   </ion-item>
 
-  <div *ngIf="isDriver">
+  <div *ngIf="usuario.isDriver">
     <ion-item>
-      <ion-input type="text" label="Modelo" labelPlacement="floating" fill="outline" [clearInput]="true"
-        placeholder="Ingresa el modelo del auto"></ion-input>
+      <ion-input type="text" label="Modelo" labelPlacement="floating" fill="outline" 
+        [(ngModel)]="usuario.auto.modelo" placeholder="Ingresa el modelo del auto"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="text" label="Asientos" labelPlacement="floating" fill="outline" [clearInput]="true"
-        placeholder="Ingresa la cantidad de asientos"></ion-input>
+      <ion-input type="text" label="Asientos" labelPlacement="floating" fill="outline" 
+        [(ngModel)]="usuario.auto.asientos" placeholder="Ingresa la cantidad de asientos"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="text" label="Patente" labelPlacement="floating" fill="outline" [clearInput]="true"
-        placeholder="Ingresa la patente"></ion-input>
+      <ion-input type="text" label="Patente" labelPlacement="floating" fill="outline" 
+        [(ngModel)]="usuario.auto.patente" placeholder="Ingresa la patente"></ion-input>
     </ion-item>
   </div>
-  <ion-button>Registrarse</ion-button>
+
+  <ion-button (click)="registrar()">Registrarse</ion-button>
 </ion-content>
