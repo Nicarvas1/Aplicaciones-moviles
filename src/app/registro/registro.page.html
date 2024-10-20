@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Registro</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -83,12 +86,16 @@
 
   <div *ngIf="usuario.isDriver">
     <ion-item>
+      <ion-input type="text" label="Marca" labelPlacement="floating" fill="outline" 
+        [(ngModel)]="usuario.auto.marca" placeholder="Ingresa la marca del auto"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-input type="text" label="Modelo" labelPlacement="floating" fill="outline" 
         [(ngModel)]="usuario.auto.modelo" placeholder="Ingresa el modelo del auto"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="text" label="Asientos" labelPlacement="floating" fill="outline" 
+      <ion-input type="number" label="Asientos" labelPlacement="floating" fill="outline" 
         [(ngModel)]="usuario.auto.asientos" placeholder="Ingresa la cantidad de asientos"></ion-input>
     </ion-item>
 

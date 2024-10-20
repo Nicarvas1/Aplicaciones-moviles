@@ -59,6 +59,7 @@ export class HomePage implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.cargarDatosDelUsuario(); // Cargar datos del usuario desde localStorage
     this.cargarDatosDelConductor(); // Cargar datos del conductor desde localStorage
+    this.cargarDatosDelUsuarioActual();
   }
 
   cargarDatosDelUsuario() {
@@ -80,7 +81,6 @@ export class HomePage implements OnInit, AfterViewInit {
       this.patenteConductor = conductor.patente;
       this.marcaConductor = conductor.marca; 
       this.modeloConductor = conductor.modelo;
-      this.telefonoConductor = conductor.telefono;
       this.destinoConductor = conductor.destino;
     } else {
       // Inicializar datos de conductor si no existen
@@ -176,19 +176,45 @@ export class HomePage implements OnInit, AfterViewInit {
   }
   
   login() {
-    const usuarioString = localStorage.getItem('usuario');
-    if (usuarioString) {
-      const usuario = JSON.parse(usuarioString);
-      if (usuario.email === this.email && usuario.clave === this.clave) {
+    const usuariosString = localStorage.getItem('usuarios');
+    if (usuariosString) {
+      const usuarios = JSON.parse(usuariosString);
+      const usuario = usuarios.find((user: any) => user.email === this.email && user.clave === this.clave);
+      if (usuario) {
+        // Guardar el usuario autenticado en localStorage
+        localStorage.setItem('usuarioActual', JSON.stringify(usuario));
         console.log(`Bienvenido ${usuario.nombre}!`);
         this.router.navigate(['/inicio']);
       } else {
         console.error('Email o contraseña incorrectos.');
       }
     } else {
-      console.error('No se encontró el usuario registrado.');
+      console.error('No se encontraron usuarios registrados.');
     }
   }
+
+  cargarDatosDelUsuarioActual() {
+    const usuarioString = localStorage.getItem('usuarioActual');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.nombreUsuario = usuario.nombre;
+      this.rutUsuario = usuario.rut;
+      this.carreraUsuario = usuario.carrera;
+      this.direccionUsuario = usuario.direccion;
+      this.telefonoUsuario = usuario.telefono;
+      
+      // Si es conductor, cargar los datos del auto
+      if (usuario.isDriver) {
+        this.patenteConductor = usuario.auto.patente;
+        this.marcaConductor = usuario.auto.marca;
+        this.modeloConductor = usuario.auto.modelo;
+        this.telefonoConductor = usuario.telefono;
+      }
+    } else {
+      console.error('No se encontró un usuario autenticado.');
+    }
+  }
+  
 
   animarError(index: number) {
     const inputElement = document.querySelectorAll('input')[index];

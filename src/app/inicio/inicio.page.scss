@@ -99,3 +99,48 @@ ion-back-button {
 header{
   background-color: var(--fondo);
 }
+
+
+
+
+.contenidoPerfil,
+.contenidoCambioColor,
+.contenidoCerrarSesion {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer;
+
+  // Efecto de hover
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+}
+
+.perfil,
+.cambiaColor,
+.cerrar {
+  width: 30px; // Ajusta el tamaño según tus necesidades
+  height: 30px;
+  margin-right: 10px;
+}
+
+.labelPerfil,
+.labelCambiarTema,
+.labelCerrarSesion {
+  font-size: 16px; // Ajusta el tamaño de la fuente
+  color: var(--ion-color-primary); // Puedes cambiar el color usando variables de Ionic
+}
+
+ion-menu {
+  background: --var(fondo);}
+
+ion-header {
+  background-color: var(--fondo); // Color de fondo del encabezado
+}
+
+ion-title {
+  font-size: 18px; // Tamaño de la fuente del título
+  font-weight: bold; // Negrita
+}

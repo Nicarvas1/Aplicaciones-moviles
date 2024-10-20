@@ -20,7 +20,6 @@ export class PerfilPage implements AfterViewInit {
   patenteConductor: string = '';
   marcaConductor: string = '';
   modeloConductor: string = '';
-  destinoConductor: string = '';
   telefonoConductor: string = '';
 
   constructor(
@@ -31,25 +30,30 @@ export class PerfilPage implements AfterViewInit {
 
   ngAfterViewInit() {
     // Cargar datos del usuario desde localStorage
-    const usuarioString = localStorage.getItem('usuario');
-    if (usuarioString) {
-      const usuario = JSON.parse(usuarioString);
-      this.nombreUsuario = usuario.nombre;
-      this.rutUsuario = usuario.rut; 
-      this.carreraUsuario = usuario.carrera;
-      this.direccionUsuario = usuario.direccion;
-      this.telefonoUsuario = usuario.telefono;
-    }
-
-    // Cargar datos del conductor desde localStorage
-    const conductorString = localStorage.getItem('conductor');
-    if (conductorString) {
-      const conductor = JSON.parse(conductorString);
-      this.patenteConductor = conductor.patente;
-      this.marcaConductor = conductor.marca; 
-      this.modeloConductor = conductor.modelo;
-      this.telefonoConductor = conductor.telefono;
-      this.destinoConductor = conductor.destino;
+    const usuarioActualString = localStorage.getItem('usuarioActual');
+    if (usuarioActualString) {
+        const usuario = JSON.parse(usuarioActualString);
+        this.nombreUsuario = `${usuario.nombre} ${usuario.apellido}`;
+        this.rutUsuario = usuario.rut; 
+        this.carreraUsuario = usuario.carrera;
+        this.direccionUsuario = usuario.direccion;
+        this.telefonoUsuario = usuario.telefono;
+        
+        // Si es conductor, cargar los datos del auto
+      
+            if (usuario.auto && usuario.auto.patente && usuario.auto.marca && usuario.auto.modelo) {
+                this.patenteConductor = usuario.auto.patente;
+                this.marcaConductor = usuario.auto.marca;
+                this.modeloConductor = usuario.auto.modelo;
+            } else {
+                // Asignar mensaje si no hay datos de conductor
+                this.patenteConductor = "No se registraron datos de automovil";
+                this.marcaConductor = "No se registraron datos de automovil";
+                this.modeloConductor = "No se registraron datos de automovil";
+            }
+        
+    } else {
+        console.error('No se encontró un usuario autenticado.');
     }
 
     // Inicializar datos de usuario y conductor en localStorage
@@ -66,8 +70,6 @@ export class PerfilPage implements AfterViewInit {
       patente: "AB-1234",
       marca: "Toyota",
       modelo: "Sedan",
-      telefono: "123456789",
-      destino: "Hogwarts",
     };
     localStorage.setItem('conductor', JSON.stringify(conductor));
     localStorage.setItem('usuario', JSON.stringify(usuario));

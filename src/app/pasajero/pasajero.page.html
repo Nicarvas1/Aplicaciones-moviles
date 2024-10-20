@@ -11,19 +11,21 @@
   <ion-list>
     <ion-card *ngFor="let trip of trips; let i = index">
       <ion-card-header>
-        <ion-card-title>{{ trip.model }} - {{ trip.licensePlate }}</ion-card-title>
-        <ion-card-subtitle>Conductor: {{ trip.conductor }}</ion-card-subtitle>
+        <ion-card-title>{{ trip.marca }} {{ trip.modelo }} - {{ trip.patente }}</ion-card-title>
+        <ion-card-subtitle>Conductor: {{ trip.nombre }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <p><strong>Salida:</strong> {{ trip.salida }}</p>
         <p><strong>Destino:</strong> {{ trip.destino }}</p>
-        <p><strong>Asientos disponibles:</strong> {{ trip.asientos }}</p>
+        <p><strong>Asientos disponibles:</strong> {{ trip.asiento }}</p>
         <p><strong>Precio:</strong> ${{ trip.precio }}</p>
+        <p><strong>Hora de salida:</strong> {{ trip.horasalida }}</p>
       </ion-card-content>
-      <ion-button expand="full" (click)="reservarViaje(trip)">Reservar</ion-button>
-      <ion-button expand="full" color="danger" (click)="eliminarViaje(i)">Eliminar</ion-button>
-    </ion-card>
+      <ion-button 
+      expand="full" 
+      (click)="reservarViaje(trip)" 
+      [disabled]="trip.asientos === 0">
+      {{ trip.asiento > 0 ? 'Reservar' : 'No disponible' }}
+    </ion-button>    </ion-card>
   </ion-list>
-
-  <ion-button (click)="addNewTrip()">Agregar Viaje</ion-button>
 </ion-content>

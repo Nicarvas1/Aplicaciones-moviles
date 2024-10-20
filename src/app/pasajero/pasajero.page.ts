@@ -6,76 +6,34 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   styleUrls: ['./pasajero.page.scss'],
 })
 export class PasajeroPage implements OnInit, AfterViewInit {
-  isConductorMode: boolean = false;
-  conductorViaje: string = '';
-  salidaViaje: string = '';
-  destinoViaje: string = '';
-  asientosViaje: string = '';
-  horasalidaViaje: string = '';
-  precioViaje: string = '';
-  licensePlate: string = ''; // Propiedad para almacenar la placa del vehículo
-  model: string = ''; // Propiedad para almacenar el modelo del vehículo
-  trips: any[] = []; // Definir la propiedad trips para almacenar los viajes
+  trips: any[] = []; // Propiedad para almacenar los viajes
 
   constructor() {}
 
   ngOnInit() {
-    this.loadConductorData(); // Cargar datos del conductor al iniciar el componente
-    this.loadTrips(); // Cargar los viajes al iniciar el componente
+    this.loadTrips(); // Cargar los viajes al iniciar la página
   }
 
   ngAfterViewInit() {}
 
-  private loadConductorData() {
-    console.log('loadConductorData llamado');
-    const conductorString = localStorage.getItem('conductor');
-    if (conductorString) {
-      const conductor = JSON.parse(conductorString);
-      console.log('Datos del conductor:', conductor);
-      this.conductorViaje = conductor.nombre;
-      this.salidaViaje = conductor.salida;
-      this.destinoViaje = conductor.destino;
-      this.asientosViaje = conductor.asiento;
-      this.horasalidaViaje = conductor.horasalida;
-      this.precioViaje = conductor.precio;
-      this.licensePlate = conductor.patente;
-      this.model = conductor.modelo;
-    }
-  }
-
-  private loadTrips() {
-    const tripsString = localStorage.getItem('trips');
-    if (tripsString) {
-      this.trips = JSON.parse(tripsString);
+  loadTrips() {
+    const viajesString = localStorage.getItem('viajes');
+    if (viajesString) {
+      this.trips = JSON.parse(viajesString);
     } else {
-      this.trips = [];
+      console.log('No hay viajes disponibles.');
     }
   }
-
-  addNewTrip() {
-    const newTrip = {
-      id: this.trips.length + 1,
-      model: this.model,
-      licensePlate: this.licensePlate,
-      conductor: this.conductorViaje,
-      salida: this.salidaViaje,
-      destino: this.destinoViaje,
-      asientos: this.asientosViaje,
-      precio: this.precioViaje,
-    };
-    this.trips.push(newTrip);
-    localStorage.setItem('trips', JSON.stringify(this.trips));
-    console.log('Nuevo viaje agregado:', newTrip);
-  }
-
-  eliminarViaje(index: number) {
-    this.trips.splice(index, 1);
-    localStorage.setItem('trips', JSON.stringify(this.trips));
-    console.log('Viaje eliminado:', index);
-  }
+  
 
   reservarViaje(trip: any) {
-    // Implementa la lógica para reservar un viaje
+    if (trip.asiento > 0) {
+      trip.asiento--; // Reduce el número de asientos disponibles
+      localStorage.setItem('viajes', JSON.stringify(this.trips)); // Actualiza el localStorage
+      alert('El viaje ha sido reservado correctamente.'); // Muestra la alerta
+    } else {
+      alert('No hay asientos disponibles.'); // Muestra alerta si no hay asientos
+    }
     console.log('Viaje reservado:', trip);
   }
 }

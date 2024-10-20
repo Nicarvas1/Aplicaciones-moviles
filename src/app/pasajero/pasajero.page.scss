@@ -1,6 +1,6 @@
 /* Estilo general para el contenido */
 ion-content {
-  --background: #f0f8ff; /* Fondo claro para el contenido */
+  --background: var(--fondo); 
 }
 
 /* Estilo para el encabezado del ion-toolbar */

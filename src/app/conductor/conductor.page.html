@@ -1,19 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registrar Conductor</ion-title>
+    <ion-title>Registrar viaje</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="registrarConductor()">
+  <form (ngSubmit)="registrarViaje()">
     <ion-list>
       <ion-item>
         <ion-label position="floating">Nombre del Conductor</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.nombre"
+          [(ngModel)]="viaje.nombre"
           name="nombre"
-          placeholder="Ingresa el nombre del conductor">
+          readonly>
         </ion-input>
       </ion-item>
 
@@ -21,9 +24,9 @@
         <ion-label position="floating">Patente</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.patente"
+          [(ngModel)]="viaje.patente"
           name="patente"
-          placeholder="Ingresa la patente">
+          readonly>
         </ion-input>
       </ion-item>
 
@@ -31,9 +34,9 @@
         <ion-label position="floating">Marca</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.marca"
+          [(ngModel)]="viaje.marca"
           name="marca"
-          placeholder="Ingresa la marca del vehículo">
+          readonly>
         </ion-input>
       </ion-item>
 
@@ -41,9 +44,9 @@
         <ion-label position="floating">Modelo</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.modelo"
+          [(ngModel)]="viaje.modelo"
           name="modelo"
-          placeholder="Ingresa el modelo del vehículo">
+          readonly>
         </ion-input>
       </ion-item>
 
@@ -51,9 +54,9 @@
         <ion-label position="floating">Teléfono</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.telefono"
+          [(ngModel)]="viaje.telefono"
           name="telefono"
-          placeholder="Ingresa el teléfono">
+          readonly>
         </ion-input>
       </ion-item>
 
@@ -61,7 +64,7 @@
         <ion-label position="floating">Lugar de Salida</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.salida"
+          [(ngModel)]="viaje.salida"
           name="salida"
           placeholder="Ingresa el lugar de salida">
         </ion-input>
@@ -71,7 +74,7 @@
         <ion-label position="floating">Destino</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.destino"
+          [(ngModel)]="viaje.destino"
           name="destino"
           placeholder="Ingresa el destino">
         </ion-input>
@@ -81,7 +84,7 @@
         <ion-label position="floating">Hora de Salida</ion-label>
         <ion-input 
           type="text" 
-          [(ngModel)]="conductor.horasalida"
+          [(ngModel)]="viaje.horasalida"
           name="horasalida"
           placeholder="Ingresa la hora de salida">
         </ion-input>
@@ -91,9 +94,10 @@
         <ion-label position="floating">Cantidad de Asientos</ion-label>
         <ion-input 
           type="number" 
-          [(ngModel)]="conductor.asiento"
+          [(ngModel)]="viaje.asiento"
           name="asiento"
-          placeholder="Ingresa la cantidad de asientos">
+          placeholder="Ingresa la cantidad de asientos"
+          readonly>
         </ion-input>
       </ion-item>
 
@@ -101,13 +105,13 @@
         <ion-label position="floating">Precio</ion-label>
         <ion-input 
           type="number" 
-          [(ngModel)]="conductor.precio"
+          [(ngModel)]="viaje.precio"
           name="precio"
           placeholder="Ingresa el precio">
         </ion-input>
       </ion-item>
 
-      <ion-button expand="full" type="submit">Registrar</ion-button>
+      <ion-button expand="full" (click)="registrarViaje()" [disabled]="!autoRegistrado">Agregar Viaje</ion-button>
     </ion-list>
   </form>
 </ion-content>

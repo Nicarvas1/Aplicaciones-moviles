@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -22,22 +23,32 @@ import { Component, OnInit } from '@angular/core';
       telefono: "",
       isDriver: false,
       auto: {
+        marca: '',
         modelo: '',
-        asientos: '',
+        asientos: 0,
         patente: ''
       }
     };
-  
-    constructor() {}
+    constructor(private router: Router) {}
   
     // Método para guardar los datos
     registrar() {
       // Validar que los datos del usuario estén completos
-      if (this.usuario && this.usuario.nombre && this.usuario.apellido && this.usuario.email &&  this.usuario.clave && this.usuario.rut && this.usuario.carrera && this.usuario.direccion && this.usuario.telefono) {
+      if (this.usuario && this.usuario.nombre && this.usuario.apellido && this.usuario.email && this.usuario.clave && this.usuario.rut && this.usuario.carrera && this.usuario.direccion && this.usuario.telefono) {
         try {
-          // Guardar los datos del usuario en localStorage
-          localStorage.setItem('usuario', JSON.stringify(this.usuario));
+          // Obtener la lista de usuarios guardados en localStorage
+          let usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+          
+          // Agregar el nuevo usuario al arreglo de usuarios
+          usuarios.push(this.usuario);
+          
+          // Guardar la lista de usuarios actualizada en localStorage
+          localStorage.setItem('usuarios', JSON.stringify(usuarios));
           console.log('Datos guardados:', this.usuario);
+          
+          // Redirigir al usuario a la página de inicio después de registrarse
+          this.router.navigate(['/home']);
+          
         } catch (error) {
           console.error('Error al guardar los datos en localStorage:', error);
         }
@@ -45,4 +56,5 @@ import { Component, OnInit } from '@angular/core';
         console.error('Datos incompletos. Por favor, completa todos los campos.');
       }
     }
+    
   }
