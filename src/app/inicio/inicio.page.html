@@ -7,33 +7,18 @@
     </ion-header>
     <ion-content>
       <div class="contenidoPerfil">
-        <ion-icon
-          class="perfil"
-          src="/assets/iconoLogin.svg"
-          id="perfil"
-          [routerLink]="['/perfil']"
-        ></ion-icon>
+        <ion-icon class="perfil" src="/assets/iconoLogin.svg" id="perfil" [routerLink]="['/perfil']"></ion-icon>
         <ion-label class="labelPerfil">Perfil</ion-label>
       </div>
 
       <div class="contenidoCambioColor">
-        <ion-icon
-          class="cambiaColor"
-          src="/assets/{{icono}}.svg"
-          id="tema"
-          (click)="cambiarTema()"
-        ></ion-icon>
+        <ion-icon class="cambiaColor" src="/assets/{{icono}}.svg" id="tema" (click)="cambiarTema()"></ion-icon>
         <ion-label class="labelCambiarTema">Cambiar tema</ion-label>
       </div>
 
       <div class="contenidoCerrarSesion">
-        <ion-icon
-          class="cerrar"
-          src="/assets/log-out.svg"
-          id="cerrar"
-          [routerLink]="['/home']"
-          (click)="cerrarSesion()"
-        ></ion-icon>
+        <ion-icon class="cerrar" src="/assets/log-out.svg" id="cerrar" [routerLink]="['/home']"
+          (click)="cerrarSesion()"></ion-icon>
         <ion-label class="labelCerrarSesion">Cerrar sesión</ion-label>
       </div>
     </ion-content>

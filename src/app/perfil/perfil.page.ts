@@ -22,6 +22,9 @@ export class PerfilPage implements AfterViewInit {
   modeloConductor: string = '';
   telefonoConductor: string = '';
 
+  /* historial */
+  historial: any[] = [];
+
   constructor(
     private router: Router,
     private modalController: ModalController,
@@ -76,6 +79,7 @@ export class PerfilPage implements AfterViewInit {
 
     // Configurar animaciones del modal
     this.setModalAnimations();
+    this.cargarHistorial();
   }
 
   private setModalAnimations() {
@@ -120,6 +124,20 @@ export class PerfilPage implements AfterViewInit {
 
     this.modal.enterAnimation = enterAnimation as any;
     this.modal.leaveAnimation = leaveAnimation as any;
+  }
+
+  cargarHistorial() {
+    const usuarioActualString = localStorage.getItem('usuarioActual');
+    if (usuarioActualString) {
+      const usuario = JSON.parse(usuarioActualString);
+      const historialString = localStorage.getItem('historial');
+      const historialCompleto = historialString ? JSON.parse(historialString) : [];
+  
+      // Filtrar los registros del historial para que solo muestren los del usuario actual
+      this.historial = historialCompleto.filter((h: { usuario: string }) => h.usuario === usuario.nombre);
+    } else {
+      this.historial = [];
+    }
   }
 
   toggleChange(event: any) {

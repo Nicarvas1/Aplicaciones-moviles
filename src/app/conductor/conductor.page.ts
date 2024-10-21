@@ -54,25 +54,35 @@ export class ConductorPage {
   }
 
   registrarViaje() {
-    // Verificar si hay un auto registrado antes de registrar el viaje
     if (!this.autoRegistrado) {
       alert('No se puede registrar el viaje porque no hay un auto registrado.');
       return;
     }
-
-    // Obtener los viajes almacenados en localStorage
+  
     let viajes = JSON.parse(localStorage.getItem('viajes') || '[]');
-    // Agregar el nuevo viaje a la lista
     viajes.push(this.viaje);
-    // Guardar la lista actualizada en localStorage
     localStorage.setItem('viajes', JSON.stringify(viajes));
-    // Mostrar mensaje de confirmación
+  
+    // Guardar en el historial
+    const usuarioActualString = localStorage.getItem('usuarioActual');
+    if (usuarioActualString) {
+      const usuario = JSON.parse(usuarioActualString);
+      let historial = JSON.parse(localStorage.getItem('historial') || '[]');
+      historial.push({
+        ...this.viaje,
+        usuario: usuario.nombre,
+        tipo: 'conductor',
+        fechaPublicacion: new Date().toISOString(),
+      });
+      localStorage.setItem('historial', JSON.stringify(historial));
+    }
+  
     alert('El viaje ha sido registrado correctamente');
-    // Reiniciar el objeto viaje, manteniendo los datos del usuario
     this.cargarDatosUsuario();
     this.viaje.salida = '';
     this.viaje.destino = '';
     this.viaje.horasalida = '';
     this.viaje.precio = 0;
   }
+  
 }

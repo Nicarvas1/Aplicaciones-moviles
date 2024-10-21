@@ -134,10 +134,11 @@ header{
 }
 
 ion-menu {
-  background: --var(fondo);}
+  --background: var(--fondo);
+}
 
 ion-header {
-  background-color: var(--fondo); // Color de fondo del encabezado
+  --background: var(--fondo); // Color de fondo del encabezado
 }
 
 ion-title {

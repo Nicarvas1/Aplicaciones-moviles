@@ -47,6 +47,7 @@ import { Router } from '@angular/router';
           console.log('Datos guardados:', this.usuario);
           
           // Redirigir al usuario a la página de inicio después de registrarse
+          alert('Registro realizado correctamente!.');
           this.router.navigate(['/home']);
           
         } catch (error) {
