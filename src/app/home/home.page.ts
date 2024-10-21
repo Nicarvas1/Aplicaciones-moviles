@@ -141,32 +141,41 @@ export class HomePage implements OnInit, AfterViewInit {
 
     await loading.present();
 
-    const usuario = this.usuarios.find(u => u.email === this.email);
-    if (usuario) {
-      const nuevaClave = Math.random().toString(36).slice(-6);
-      usuario.clave = nuevaClave;
+    const usuariosString = localStorage.getItem('usuarios');
+    if (usuariosString) {
+      const usuarios = JSON.parse(usuariosString);
+      const usuario = usuarios.find((u: any) => u.email === this.email);
+      if (usuario) {
+        const nuevaClave = Math.random().toString(36).slice(-6);
+        usuario.clave = nuevaClave;
 
-      const body = {
-        nombre: usuario.nombre,
-        app: "Aplicaciones-moviles",
-        clave: nuevaClave,
-        email: usuario.email,
-      };
+        const body = {
+          nombre: usuario.nombre,
+          app: "Aplicaciones-moviles",
+          clave: nuevaClave,
+          email: usuario.email,
+        };
 
-      this.http.post("https://myths.cl/api/reset_password.php", body)
-        .subscribe({
-          next: (data) => {
-            console.log(data);
-          },
-          error: (error) => {
-            console.error("Error al restablecer la contraseña", error);
-          },
-          complete: () => {
-            loading.dismiss();
-          }
-        });
+        this.http.post("https://myths.cl/api/reset_password.php", body)
+          .subscribe({
+            next: (data) => {
+              console.log(data);
+              // Actualizar usuarios en localStorage
+              localStorage.setItem('usuarios', JSON.stringify(usuarios));
+            },
+            error: (error) => {
+              console.error("Error al restablecer la contraseña", error);
+            },
+            complete: () => {
+              loading.dismiss();
+            }
+          });
+      } else {
+        console.log("Email no encontrado!");
+        loading.dismiss();
+      }
     } else {
-      console.log("Email no encontrado!");
+      console.log("No se encontraron usuarios registrados.");
       loading.dismiss();
     }
   }
