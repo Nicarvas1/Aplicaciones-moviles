@@ -84,3 +84,11 @@
 .contenedor-modal button:hover {
   background-color: #357ae8;
 }
+.resaltar {
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.resaltar:hover {
+  color: rgb(83, 83, 252); /* Cambia el color según tu preferencia */
+  text-decoration: underline; /* Subrayado al pasar el mouse */
+}
