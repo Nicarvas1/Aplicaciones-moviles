@@ -16,8 +16,11 @@ export class InicioPage implements OnInit {
   }
 
   ngOnInit() {
-    this.cargarDatosUsuario(); // Cargar datos del usuario al inicializar
     this.animarLogo();
+  }
+
+  ionViewWillEnter() {
+    this.cargarDatosUsuario(); // Cargar datos del usuario al inicializar
   }
 
   
@@ -62,6 +65,8 @@ export class InicioPage implements OnInit {
       // Verificar si hay un auto registrado
       if(usuario.auto.marca === "" && usuario.auto.patente === "" && usuario.auto.modelo === "" ){
         this.autoRegistrado = false;
+      }else{
+        this.autoRegistrado = true
       }
     } else {
       console.error('No se encontró un usuario autenticado.');

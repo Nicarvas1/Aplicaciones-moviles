@@ -12,7 +12,7 @@
     <ion-card *ngFor="let trip of trips; let i = index">
       <ion-card-header>
         <ion-card-title>{{ trip.marca }} {{ trip.modelo }} - {{ trip.patente }}
-          <ion-icon name="map" [routerLink]="['/mapa']" [queryParams]="{ salida: trip.salida, destino: trip.destino }"></ion-icon>
+            <ion-icon name="map" [routerLink]="['/mapa']" [queryParams]="{ salida: trip.salida, destino: trip.destino }" style="color: rgb(93, 93, 245);"></ion-icon>
         </ion-card-title>
         <ion-card-subtitle>Conductor: {{ trip.nombre }}</ion-card-subtitle>
       </ion-card-header>
