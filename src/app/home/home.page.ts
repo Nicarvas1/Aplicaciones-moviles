@@ -194,6 +194,8 @@ export class HomePage implements OnInit, AfterViewInit {
         localStorage.setItem('usuarioActual', JSON.stringify(usuario));
         console.log(`Bienvenido ${usuario.nombre}!`);
         this.router.navigate(['/inicio']);
+        window.location.reload();
+
       } else {
         console.error('Email o contraseña incorrectos.');
       }

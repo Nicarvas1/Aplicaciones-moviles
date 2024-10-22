@@ -7,14 +7,17 @@ import { Animation, AnimationController } from '@ionic/angular';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  
 
-  constructor(private anim: AnimationController) { }
+  icono = "oscuro";
+  autoRegistrado: boolean = true; // Propiedad para controlar si hay un auto registrado
 
-  icono = "oscuro"
+  constructor(private anim: AnimationController) {
+
+  }
 
   ngOnInit() {
-    this.animarLogo();// Inicialización si es necesario
+    this.cargarDatosUsuario(); // Cargar datos del usuario al inicializar
+    this.animarLogo();
   }
 
   
@@ -36,19 +39,32 @@ export class InicioPage implements OnInit {
     }
   }
 
-  animarLogo(){
+  animarLogo() {
     this.anim.create()
-    .addElement(document.querySelector("#logo")!)
-    .duration(1000)
-    .iterations(Infinity)
-    .direction('alternate')
-    .fromTo("color", "--icono", "--icono")
-    .fromTo("transform","scale(1)", "scale(1.3)")
-    .play()
+      .addElement(document.querySelector("#logo")!)
+      .duration(1000)
+      .iterations(Infinity)
+      .direction('alternate')
+      .fromTo("color", "--icono", "--icono")
+      .fromTo("transform", "scale(1)", "scale(1.3)")
+      .play();
   }
 
-  cerrarSesion(){
+  cerrarSesion() {
     // Cerrar sesión
   }
 
+  cargarDatosUsuario() {
+    // Cargar los datos del usuario autenticado desde localStorage
+    const usuarioActualString = localStorage.getItem('usuarioActual');
+    if (usuarioActualString) {
+      const usuario = JSON.parse(usuarioActualString);
+      // Verificar si hay un auto registrado
+      if(usuario.auto.marca === "" && usuario.auto.patente === "" && usuario.auto.modelo === "" ){
+        this.autoRegistrado = false;
+      }
+    } else {
+      console.error('No se encontró un usuario autenticado.');
+    }
+  }
 }

@@ -53,6 +53,8 @@ export class ConductorPage {
     }
   }
 
+  
+
   registrarViaje() {
     if (!this.autoRegistrado) {
       alert('No se puede registrar el viaje porque no hay un auto registrado.');
