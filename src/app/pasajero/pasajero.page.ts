@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pasajero',
@@ -8,7 +9,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 export class PasajeroPage implements OnInit, AfterViewInit {
   trips: any[] = []; // Propiedad para almacenar los viajes
 
-  constructor() {}
+  constructor(private alertController: AlertController) {}
 
   ngOnInit() {
     this.loadTrips(); // Cargar los viajes al iniciar la página
@@ -42,7 +43,7 @@ export class PasajeroPage implements OnInit, AfterViewInit {
    * 
    * @param {any} trip - El viaje a reservar.
    */
-  reservarViaje(trip: any) {
+  async reservarViaje(trip: any) {
     if (trip.asiento > 0) {
       trip.asiento--; // Reduce el número de asientos disponibles
       localStorage.setItem('viajes', JSON.stringify(this.trips)); // Actualiza el localStorage
@@ -61,10 +62,20 @@ export class PasajeroPage implements OnInit, AfterViewInit {
         localStorage.setItem('historial', JSON.stringify(historial));
       }
   
-      alert('El viaje ha sido reservado correctamente.');
+      await this.mostrarAlerta('Éxito', 'El viaje ha sido reservado correctamente.');
     } else {
-      alert('No hay asientos disponibles.');
+      await this.mostrarAlerta('Advertencia', 'No hay asientos disponibles.');
     }
   }
-  
+
+  // Método para mostrar alertas
+  async mostrarAlerta(titulo: string, mensaje: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }

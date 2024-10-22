@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-conductor',
@@ -21,7 +22,7 @@ export class ConductorPage {
 
   autoRegistrado: boolean = true; // Propiedad para controlar si hay un auto registrado
 
-  constructor() {
+  constructor(private alertController: AlertController) {
     this.cargarDatosUsuario();
   }
 
@@ -53,11 +54,9 @@ export class ConductorPage {
     }
   }
 
-  
-
-  registrarViaje() {
+  async registrarViaje() {
     if (!this.autoRegistrado) {
-      alert('No se puede registrar el viaje porque no hay un auto registrado.');
+      await this.mostrarAlerta('Error', 'No se puede registrar el viaje porque no hay un auto registrado.');
       return;
     }
   
@@ -79,7 +78,7 @@ export class ConductorPage {
       localStorage.setItem('historial', JSON.stringify(historial));
     }
   
-    alert('El viaje ha sido registrado correctamente');
+    await this.mostrarAlerta('Éxito', 'El viaje ha sido registrado correctamente.');
     this.cargarDatosUsuario();
     this.viaje.salida = '';
     this.viaje.destino = '';
@@ -87,4 +86,14 @@ export class ConductorPage {
     this.viaje.precio = 0;
   }
   
+  // Método para mostrar alertas
+  async mostrarAlerta(titulo: string, mensaje: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
