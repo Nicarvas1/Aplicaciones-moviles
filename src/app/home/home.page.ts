@@ -32,18 +32,7 @@ export class HomePage implements OnInit, AfterViewInit {
   telefonoConductor = '';
 
   // Lista de usuarios predefinidos
-  usuarios = [
-    {
-      nombre: "Juan Hernandez",
-      clave: "juanito123",
-      email: "juan@gmail.com"
-    },
-    {
-      nombre: "Benjamin Casellas",
-      clave: "casellas20",
-      email: "b.casellas12@gmail.com"
-    },
-  ];
+
 
   constructor(
     private anim: AnimationController,
@@ -58,7 +47,6 @@ export class HomePage implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.cargarDatosDelUsuario(); // Cargar datos del usuario desde localStorage
-    this.cargarDatosDelConductor(); // Cargar datos del conductor desde localStorage
     this.cargarDatosDelUsuarioActual();
   }
 
@@ -74,30 +62,7 @@ export class HomePage implements OnInit, AfterViewInit {
     }
   }
 
-  cargarDatosDelConductor() {
-    const conductorString = localStorage.getItem('conductor');
-    if (conductorString) {
-      const conductor = JSON.parse(conductorString);
-      this.patenteConductor = conductor.patente;
-      this.marcaConductor = conductor.marca; 
-      this.modeloConductor = conductor.modelo;
-      this.destinoConductor = conductor.destino;
-    } else {
-      // Inicializar datos de conductor si no existen
-      this.inicializarConductor();
-    }
-  }
 
-  inicializarConductor() {
-    const conductor = {
-      patente: "AB-1234",
-      marca: "Toyota",
-      modelo: "Sedan",
-      telefono: "123456789",
-      destino: "Hogwarts",
-    };
-    localStorage.setItem('conductor', JSON.stringify(conductor));
-  }
 
   inicializarUsuario() {
     const usuario = {
